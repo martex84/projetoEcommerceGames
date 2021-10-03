@@ -1,0 +1,63 @@
+/*
+
+    Container Principal
+
+*/
+#headerContainerPrincipal {
+    height: 90px;
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    background-color: #21305E;
+}
+
+/*
+
+    Logo
+
+*/
+#logoPrincipal {
+    display: flex;
+    align-items: center;
+}
+
+#logoPrincipal>img {
+    width: 50px;
+    height: 30px;
+    margin-right: 5px;
+}
+
+#logoPrincipal>span {
+    color: #9932CC;
+    font-size: 1.3em;
+}
+
+#menuSmartphone {
+    display: none;
+}
+
+@media only screen and (max-width: 600px) {
+
+    #logoPrincipal>span,
+    #logoPrincipal>img {
+        display: none;
+    }
+
+    #menuSmartphone {
+        display: block;
+    }
+
+}
+
+/*
+
+    Carrinho
+
+*/
+#carrinhoCompra {
+    width: 70px;
+    height: 40px;
+}
