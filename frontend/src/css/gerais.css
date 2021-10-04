@@ -9,3 +9,26 @@
     align-items: center;
     text-align: center;
 }
+
+/*
+
+    Display
+
+*/
+.semDisplay {
+    background-color: red;
+    display: none;
+}
+
+.displayBlock {
+    display: block;
+}
+
+/*
+
+    Margin e Padding
+
+*/
+.marginTopZero {
+    margin-top: 0;
+}
