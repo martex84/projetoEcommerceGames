@@ -32,6 +32,7 @@
 
 #logoPrincipal>span {
     color: #9932CC;
+    text-shadow: 1px 0px 1px #ffff;
     font-size: 1.3em;
 }
 

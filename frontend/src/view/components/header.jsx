@@ -1,8 +1,7 @@
 import React from "react";
 
 import '../../css/header.css'
-import carrinho from '../../assets/cart-icon.svg'
-import logo from '../../assets/logo.png'
+
 
 function Header() {
     return (
@@ -10,7 +9,7 @@ function Header() {
             <header id="headerContainerPrincipal">
                 <div id="containerLogoMenu">
                     <div id="logoPrincipal">
-                        <img src={logo} />
+                        <img src="assets/logo.png" />
                         <span>
                             EGame
                         </span>
@@ -20,7 +19,7 @@ function Header() {
                     </div>
                 </div>
                 <div id="containerCarrinhoCompra">
-                    <img id="carrinhoCompra" src={carrinho}></img>
+                    <img id="carrinhoCompra" src="assets/cart-icon.svg"></img>
                 </div>
             </header>
         </>

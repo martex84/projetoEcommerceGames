@@ -1,0 +1,60 @@
+/*
+
+    Container
+
+*/
+#containerProduto {
+    width: 210px;
+    margin: 20px;
+}
+
+/*
+
+    Nome
+
+*/
+#nomeProduto {
+    height: 50px;
+    margin: auto;
+    display: flex;
+    background-color: #141D38;
+    border-radius: 10px 10px 0 0;
+}
+
+#nomeProduto>span {
+    width: 180px;
+}
+
+/*
+
+    Imagem
+
+*/
+#containerImagemProduto {
+    height: 220px;
+    background-color: #ffff;
+    text-align: center;
+}
+
+/*
+
+    Preço
+
+*/
+#containerPrecoProduto {
+    height: 40px;
+    background-color: #141D38;
+}
+
+/*
+
+    Botão
+
+*/
+#botaoProduto {
+    width: 100%;
+    height: 40px;
+    border: 0;
+    background-color: #978AB8;
+    border-radius: 0 0 10px 10px;
+}
