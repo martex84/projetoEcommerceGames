@@ -1,0 +1,37 @@
+/*
+
+    Navbar
+
+*/
+#containerNavBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    background-color: #37519E;
+}
+
+@media only screen and (max-width: 600px) {
+    #containerNavBar {
+        display: none;
+    }
+}
+
+/*
+
+    Botões
+
+*/
+.botaoNavbar {
+    height: 50px;
+    color: #ffff;
+    font-size: 1.3em;
+    background-color: #37519E;
+    border: 0;
+    cursor: pointer;
+}
+
+.botaoNavbar:hover {
+    color: #9932CC;
+}
