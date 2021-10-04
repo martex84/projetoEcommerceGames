@@ -12,6 +12,9 @@ function Home() {
     const [objetoProduto, setObjetoProduto] = useState(null);
     const [produtoInterno, setProdutoInterno] = useState(null);
     const [categoriaAtual, setCategoriaAtual] = useState("Data");
+    const [tipoCategoria] = useState([
+        "Data", "Menor Preço", "Maior Preço", "Popularidade", "Ordem Alfabética"
+    ]);
 
     const criarProduto = useCallback((objeto) => {
         const arrayInterna = [];
@@ -39,7 +42,17 @@ function Home() {
             <Navbar />
             <section id="sectionPrincipalHome">
                 <div id="barraFerramentaCentral">
-                    Barra Central
+                    <div id="containerLocal">
+                        {`Categoria/${categoriaAtual}`}
+                    </div>
+                    <div id="containerFiltro">
+                        <select id="filtroCategoria" >
+                            <option className="componenteFiltro">{tipoCategoria[0]}</option>
+                            <option className="componenteFiltro">{tipoCategoria[1]}</option>
+                            <option className="componenteFiltro">{tipoCategoria[2]}</option>
+                            <option className="componenteFiltro">{tipoCategoria[3]}</option>
+                        </select>
+                    </div>
                 </div>
                 <div id="containerGrupoProdutos">
                     {produtoInterno}
