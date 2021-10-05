@@ -1,0 +1,119 @@
+/*
+
+    Aba
+
+*/
+#containerAbaInternaCarrinho {
+    width: 300px;
+    position: absolute;
+    top: 23px;
+    right: -15px;
+    border-radius: 0 0 20px 20px;
+    background-color: #21305E;
+    z-index: 10;
+}
+
+/*
+
+    Produtos
+
+*/
+#grupoProdutosCarrinho {
+    padding: 10px;
+}
+
+.containerProdutoCarrinho {
+    height: 150px;
+    padding: 10px;
+    background-color: #ffff;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.containerImagemProdutoCarrinho {
+    width: 120px;
+}
+
+.containerImagemProdutoCarrinho>img {
+    width: 100%;
+}
+
+.containerInformacaoProdutoCarrinho {
+    flex-direction: column;
+}
+
+.informacaoProdutoCarrinho {
+    margin: 5px 0;
+    color: #182345;
+    text-align: center;
+}
+
+.containerInformacaoProdutoCarrinho>img {
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+/*
+
+    Resultado
+
+*/
+#resultadoCarrinho {
+    height: 100px;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #182345;
+    border-radius: 0 0 20px 20px;
+}
+
+#containerGrupoBotaoResultadoCarrinho {
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerBotaoResultadoCarrinho {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.botaoResultado {
+    border: 0;
+    color: #ffff;
+    cursor: pointer;
+}
+
+
+
+.botaoTotal {
+    height: 50px;
+    background-color: #A193C4;
+    border-radius: 10px;
+}
+
+.botaoTotal:hover {
+    color: #141D38;
+}
+
+.botaoLimpar {
+    height: 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    background-color: #37519E;
+}
+
+.botaoLimpar:hover {
+    color: #4E72DE;
+}

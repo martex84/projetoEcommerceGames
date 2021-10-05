@@ -5,7 +5,8 @@ import '../../css/home.css'
 import Header from "../components/header";
 import Navbar from "../components/navbar";
 import Produto from "../components/produto";
-import jsonProduto from '../../dataBase/products.json'
+import jsonProduto from '../../dataBase/products.json';
+import Carrinho from "../components/carrinho";
 
 function Home() {
 
@@ -141,7 +142,11 @@ function Home() {
 
     return (
         <>
-            <Header />
+            <Header
+                childrens={
+                    <Carrinho />
+                }
+            />
             <Navbar />
             <section id="sectionPrincipalHome">
                 <div id="containerPropaganda" className="centralizar">

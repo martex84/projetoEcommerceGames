@@ -58,6 +58,14 @@
     Carrinho
 
 */
+#containerCarrinhoCompra {
+    cursor: pointer;
+}
+
+#containerAbaCarrinho {
+    position: relative;
+}
+
 #carrinhoCompra {
     width: 70px;
     height: 40px;

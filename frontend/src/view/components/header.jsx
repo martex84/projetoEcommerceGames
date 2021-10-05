@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 
 import '../../css/header.css'
 
+function Header({ childrens }) {
+    const [displayCarrinho, setDisplayCarrinho] = useState("semDisplay")
+    const [propriedadeCarrinho, setPropriedadeCarrinho] = useState(false)
 
-function Header() {
+    function alteraPropriedadeCarrinho() {
+        if (propriedadeCarrinho === true) {
+            setDisplayCarrinho("semDisplay");
+            setPropriedadeCarrinho(false);
+        }
+        else {
+            setDisplayCarrinho("displayBlock");
+            setPropriedadeCarrinho(true);
+        }
+    }
+
     return (
         <>
             <header id="headerContainerPrincipal">
@@ -18,8 +31,11 @@ function Header() {
                         Icone Menu
                     </div>
                 </div>
-                <div id="containerCarrinhoCompra">
+                <div id="containerCarrinhoCompra" onClick={e => alteraPropriedadeCarrinho()}>
                     <img id="carrinhoCompra" src="assets/cart-icon.svg"></img>
+                    <div id="containerAbaCarrinho" className={displayCarrinho}>
+                        {childrens}
+                    </div>
                 </div>
             </header>
         </>
