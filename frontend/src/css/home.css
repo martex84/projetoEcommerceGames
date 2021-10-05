@@ -1,5 +1,43 @@
 /*
 
+    Propaganda
+
+*/
+#containerPropaganda {
+    width: 500px;
+    margin: 20px auto;
+    position: relative;
+}
+
+#containerImagemPropaganda {
+    width: 100%;
+}
+
+#containerImagemPropaganda>img {
+    width: 100%;
+}
+
+.containerBotaoPropaganda {
+    position: absolute;
+    cursor: pointer;
+}
+
+.setaEsquerda {
+    right: 5px;
+}
+
+.setaDireita {
+    left: 5px;
+}
+
+@media only screen and (max-width: 800px) {
+    #containerPropaganda {
+        width: 90%;
+    }
+}
+
+/*
+
     Barra Compra
 
 */
@@ -13,6 +51,10 @@
     align-items: center;
     justify-content: space-between;
     background-color: #37519E;
+}
+
+#containerFiltro {
+    position: relative;
 }
 
 #displayFiltro {
@@ -38,11 +80,11 @@
     transform: rotate(0deg);
 }
 
-#containerFiltro {
+#filtroCategoria {
     padding: 20px;
     position: absolute;
-    top: 174px;
-    right: 0;
+    top: 18px;
+    right: -20px;
     background-color: #37519E;
 }
 
@@ -51,12 +93,6 @@
     width: 100%;
     list-style: none;
     margin-top: 20px;
-}
-
-@media only screen and (max-width: 800px) {
-    #containerFiltro {
-        top: 123px;
-    }
 }
 
 /*
