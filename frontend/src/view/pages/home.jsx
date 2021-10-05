@@ -10,7 +10,7 @@ import jsonProduto from '../../dataBase/products.json'
 function Home() {
 
     const [tipoFiltro] = useState([
-        "Data", "Menor Preço", "Maior Preço", "Popularidade", "Alfabetica"
+        "Data", "Menor Preço", "Maior Preço", "Popularidade", "A-Z", "Z-A"
     ]);
     const [listPropaganda] = useState([
         "PropagandaShadowOfMordor.png", "PropagandaTheWitcher.png", "PropagandaCallDuty.png"
@@ -27,7 +27,7 @@ function Home() {
         const objetoInterno = [...jsonProduto];
 
         switch (tipoOrganizacao) {
-            case tipoFiltro[0]: //Ira retornar por Data, isso é do Id maior para o menor
+            case tipoFiltro[0]: //Por Data
                 objetoInterno.sort((valor1, valor2) => {
                     if (valor1.id > valor2.id) return -1;
                     else if (valor1.id < valor2.id) return 1;
@@ -36,19 +36,49 @@ function Home() {
                 criarProduto(objetoInterno)
                 break;
 
-            case tipoFiltro[1]:
+            case tipoFiltro[1]://Por Maior Preço
                 objetoInterno.sort((valor1, valor2) => {
                     if (valor1.price > valor2.price) return 1;
                     else if (valor1.price < valor2.price) return -1;
                     else return 0
                 })
-                console.log(objetoInterno);
+                criarProduto(objetoInterno)
                 break;
 
-            case tipoFiltro[2]:
+            case tipoFiltro[2]://Por Menor Preço
+                objetoInterno.sort((valor1, valor2) => {
+                    if (valor1.price > valor2.price) return -1;
+                    else if (valor1.price < valor2.price) return 1;
+                    else return 0
+                })
+                criarProduto(objetoInterno)
                 break;
 
-            case tipoFiltro[3]:
+            case tipoFiltro[3]://Por Maior Popularidade
+                objetoInterno.sort((valor1, valor2) => {
+                    if (valor1.score > valor2.score) return -1;
+                    else if (valor1.score < valor2.score) return 1;
+                    else return 0
+                })
+                criarProduto(objetoInterno)
+                break;
+
+            case tipoFiltro[4]:
+                objetoInterno.sort((valor1, valor2) => {
+                    if (valor1.name > valor2.name) return 1;
+                    else if (valor1.name < valor2.name) return -1;
+                    else return 0
+                })
+                criarProduto(objetoInterno)
+                break;
+
+            case tipoFiltro[5]:
+                objetoInterno.sort((valor1, valor2) => {
+                    if (valor1.name > valor2.name) return -1;
+                    else if (valor1.name < valor2.name) return 1;
+                    else return 0
+                })
+                criarProduto(objetoInterno)
                 break;
         }
     }
@@ -138,10 +168,11 @@ function Home() {
                         </div>
                         <ul id="filtroCategoria" className={`${visualizacaoFiltro}`} >
                             <li className="componenteFiltro marginTopZero" onClick={e => OrganizaComponentes(tipoFiltro[0])}>{tipoFiltro[0]}</li>
-                            <li className="componenteFiltro" >{tipoFiltro[1]}</li>
-                            <li className="componenteFiltro" >{tipoFiltro[2]}</li>
-                            <li className="componenteFiltro" >{tipoFiltro[3]}</li>
-                            <li className="componenteFiltro" >{tipoFiltro[4]}</li>
+                            <li className="componenteFiltro" onClick={e => OrganizaComponentes(tipoFiltro[1])}>{tipoFiltro[1]}</li>
+                            <li className="componenteFiltro" onClick={e => OrganizaComponentes(tipoFiltro[2])}>{tipoFiltro[2]}</li>
+                            <li className="componenteFiltro" onClick={e => OrganizaComponentes(tipoFiltro[3])}>{tipoFiltro[3]}</li>
+                            <li className="componenteFiltro" onClick={e => OrganizaComponentes(tipoFiltro[4])}>{tipoFiltro[4]}</li>
+                            <li className="componenteFiltro" onClick={e => OrganizaComponentes(tipoFiltro[5])}>{tipoFiltro[5]}</li>
                         </ul>
                     </div>
                 </div>
