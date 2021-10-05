@@ -109,7 +109,7 @@ function Home() {
                     return setPropagandaAtual(propagandaAtual - 1)
                 }
                 else if (propagandaAtual === 0) {
-                    return setPropagandaAtual(2);
+                    return setPropagandaAtual(listPropaganda.length - 1);
                 }
                 break;
 

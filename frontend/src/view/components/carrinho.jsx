@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import '../../css/carrinho.css'
 
 function Carrinho(props) {
 
-    const produto = [
+    const [objetoProduto, setObjetoProduto] = useState([
         {
             "id": 99,
             "name": "Call Of Duty WWII",
@@ -12,26 +12,45 @@ function Carrinho(props) {
             "score": 205,
             "image": "call-of-duty-wwii.png"
         }
-    ]
+    ]);
+
+    const [componenteProduto, setComponenteProduto] = useState();
+
+    function criarGrupoProduto() {
+        const valorRetorno = []
+        objetoProduto.map(produto => {
+            valorRetorno.push(
+                <div className="containerProdutoCarrinho">
+                    <div className="containerImagemProdutoCarrinho">
+                        <img src={`/assets/${produto.image}`} />
+                    </div>
+                    <div className="containerInformacaoProdutoCarrinho centralizar">
+                        <p className="informacaoProdutoCarrinho">
+                            {produto.name}
+                        </p>
+                        <p className="informacaoProdutoCarrinho">
+                            {`R$ ${produto.price}`}
+                        </p>
+                        <img src="/assets/delete.svg" alt="Lixeira" />
+                    </div>
+                </div>
+            )
+        })
+
+        setComponenteProduto(valorRetorno);
+    }
+
+    useEffect(() => {
+        if (componenteProduto === undefined) {
+            criarGrupoProduto()
+        }
+    })
 
     return (
         <>
             <div id="containerAbaInternaCarrinho">
                 <div id="grupoProdutosCarrinho">
-                    <div className="containerProdutoCarrinho">
-                        <div className="containerImagemProdutoCarrinho">
-                            <img src={`/assets/${produto[0].image}`} />
-                        </div>
-                        <div className="containerInformacaoProdutoCarrinho centralizar">
-                            <p className="informacaoProdutoCarrinho">
-                                {produto[0].name}
-                            </p>
-                            <p className="informacaoProdutoCarrinho">
-                                {`R$ ${produto[0].price}`}
-                            </p>
-                            <img src="/assets/delete.svg" alt="Lixeira" />
-                        </div>
-                    </div>
+                    {componenteProduto}
                 </div>
                 <div id="resultadoCarrinho">
                     <div id="dadosResultadoCarrinho">
