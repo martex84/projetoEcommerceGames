@@ -110,6 +110,17 @@
     flex-wrap: wrap;
 }
 
+.componenteFiltro {
+    padding: 2px;
+    cursor: pointer;
+}
+
+.componenteFiltro:hover {
+    padding-bottom: 1px;
+    border-bottom: 1px solid #9932CC;
+    color: #9932CC;
+}
+
 @media only screen and (max-width: 800px) {
     #containerGrupoProdutos {
         width: 100%;

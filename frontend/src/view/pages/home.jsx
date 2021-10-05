@@ -23,6 +23,36 @@ function Home() {
     const [setaFiltro, setSetaFiltro] = useState(".setaFiltroBaixo");
     const [propagandaAtual, setPropagandaAtual] = useState(0)
 
+    function OrganizaComponentes(tipoOrganizacao) {
+        const objetoInterno = [...jsonProduto];
+
+        switch (tipoOrganizacao) {
+            case tipoFiltro[0]: //Ira retornar por Data, isso é do Id maior para o menor
+                objetoInterno.sort((valor1, valor2) => {
+                    if (valor1.id > valor2.id) return -1;
+                    else if (valor1.id < valor2.id) return 1;
+                    else return 0
+                })
+                criarProduto(objetoInterno)
+                break;
+
+            case tipoFiltro[1]:
+                objetoInterno.sort((valor1, valor2) => {
+                    if (valor1.price > valor2.price) return 1;
+                    else if (valor1.price < valor2.price) return -1;
+                    else return 0
+                })
+                console.log(objetoInterno);
+                break;
+
+            case tipoFiltro[2]:
+                break;
+
+            case tipoFiltro[3]:
+                break;
+        }
+    }
+
     const criarProduto = useCallback((objeto) => {
         const arrayInterna = [];
 
@@ -107,7 +137,7 @@ function Home() {
                             <img src="/assets/arrow-down-icon.svg" className={`${setaFiltro}`} alt="Seta Baixo" />
                         </div>
                         <ul id="filtroCategoria" className={`${visualizacaoFiltro}`} >
-                            <li className="componenteFiltro marginTopZero" >{tipoFiltro[0]}</li>
+                            <li className="componenteFiltro marginTopZero" onClick={e => OrganizaComponentes(tipoFiltro[0])}>{tipoFiltro[0]}</li>
                             <li className="componenteFiltro" >{tipoFiltro[1]}</li>
                             <li className="componenteFiltro" >{tipoFiltro[2]}</li>
                             <li className="componenteFiltro" >{tipoFiltro[3]}</li>
