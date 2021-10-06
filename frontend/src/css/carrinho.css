@@ -1,16 +1,22 @@
 /*
 
-    Aba
+    Section
 
 */
-#containerAbaInternaCarrinho {
-    width: 300px;
-    position: absolute;
-    top: 23px;
-    right: -15px;
-    border-radius: 0 0 20px 20px;
-    background-color: #21305E;
-    z-index: 10;
+#sectionCarrinho {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+@media only screen and (max-width: 799px) {
+    #sectionCarrinho {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 /*
@@ -18,13 +24,34 @@
     Produtos
 
 */
+#containerGrupoProdutosCarrinho {
+    width: 780px;
+    margin-right: 10px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #4E72DE;
+    border-radius: 10px;
+}
+
 #grupoProdutosCarrinho {
-    padding: 10px;
+    width: 100%;
+    border-radius: 20px;
+}
+
+#tituloGrupoProduto {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 20px 10px;
+    border-radius: 7px 7px 0 0;
 }
 
 .containerProdutoCarrinho {
     margin-top: 5px;
-    height: 150px;
+    height: 180px;
     padding: 10px;
     background-color: #ffff;
     display: flex;
@@ -32,6 +59,7 @@
     flex-wrap: nowrap;
     align-items: center;
     justify-content: space-around;
+    border-radius: 20px;
 }
 
 .containerProdutoCarrinho:first-child {
@@ -39,7 +67,7 @@
 }
 
 .containerImagemProdutoCarrinho {
-    width: 120px;
+    width: 150px;
 }
 
 .containerImagemProdutoCarrinho>img {
@@ -47,18 +75,33 @@
 }
 
 .containerInformacaoProdutoCarrinho {
+    width: 200px;
     flex-direction: column;
 }
 
 .informacaoProdutoCarrinho {
     margin: 5px 0;
     color: #182345;
-    text-align: center;
 }
 
-.containerInformacaoProdutoCarrinho>img {
+.botaoCarrinho {
     margin-top: 20px;
     cursor: pointer;
+}
+
+@media only screen and (max-width: 799px) {
+    #containerGrupoProdutosCarrinho {
+        width: 80%;
+    }
+
+    .containerProdutoCarrinho {
+        height: 400px;
+        flex-direction: column;
+    }
+
+    .containerInformacaoProdutoCarrinho {
+        width: 100%;
+    }
 }
 
 /*
@@ -66,41 +109,58 @@
     Resultado
 
 */
-#resultadoCarrinho {
-    height: 100px;
-    padding: 20px;
+#containerResultadoCheckout {
+    width: 150px;
+    min-width: 150px;
     display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    background-color: #182345;
-    border-radius: 0 0 20px 20px;
+    background-color: #4E72DE;
+    border-radius: 10px;
+}
+
+#tituloResultadoCheckout {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 20px 10px;
+
+}
+
+#dadosResultadoCarrinho {
+    padding: 12px;
+    background-color: #ffff;
 }
 
 #containerGrupoBotaoResultadoCarrinho {
+    width: 100%;
     height: 100px;
     display: flex;
-    flex-direction: row;
     flex-wrap: nowrap;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+.informacaoResultado {
+    margin: 5px 0;
+    color: #182345;
+}
+
 .containerBotaoResultadoCarrinho {
+    width: 90%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .botaoResultado {
+    width: 100%;
     border: 0;
     color: #ffff;
     cursor: pointer;
 }
-
-
 
 .botaoTotal {
     height: 50px;

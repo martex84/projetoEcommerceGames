@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from 'react-router-dom'
 
 import '../../css/header.css'
 
@@ -31,12 +32,11 @@ function Header({ childrens, displayAbaCarrinho }) {
                         Icone Menu
                     </div>
                 </div>
-                <div id="containerCarrinhoCompra" onClick={e => alteraPropriedadeCarrinho()}>
-                    <img id="carrinhoCompra" src="assets/cart-icon.svg"></img>
-                    <div id="containerAbaCarrinho" className={displayCarrinho}>
-                        {childrens}
+                <Link to="/carrinho">
+                    <div id="containerCarrinhoCompra" onClick={e => alteraPropriedadeCarrinho()}>
+                        <img id="carrinhoCompra" src="assets/cart-icon.svg"></img>
                     </div>
-                </div>
+                </Link>
             </header>
         </>
     );

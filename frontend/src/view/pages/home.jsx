@@ -23,7 +23,7 @@ function Home() {
     const [visualizacaoFiltro, setVisualizacaoFiltro] = useState("semDisplay")
     const [setaFiltro, setSetaFiltro] = useState(".setaFiltroBaixo");
     const [propagandaAtual, setPropagandaAtual] = useState(0);
-    const [objetoCarrinho, setObjetoCarrinho] = useState();
+    const [objetoLocalStorage, setObjetoLocalStorage] = useState("");
 
     function OrganizaComponentes(tipoOrganizacao) {
         const objetoInterno = [...jsonProduto];
@@ -133,7 +133,25 @@ function Home() {
     }
 
     function salvaListaCarrinho(objeto) {
-        setObjetoCarrinho(objeto);
+        setObjetoLocalStorage(objeto);
+    }
+
+    function salvaLocalStorage(objeto) {
+        let objetoRetorno = []
+
+        if (localStorage.getItem("itemCarrinho") !== null) {
+            JSON.parse(localStorage.getItem("itemCarrinho")).map(objetoInterno => {
+                objetoRetorno.push(objetoInterno);
+            })
+        }
+
+        objetoRetorno.push(objeto);
+
+        localStorage.removeItem("itemCarrinho");
+
+        localStorage.setItem("itemCarrinho", JSON.stringify(objetoRetorno));
+
+        setObjetoLocalStorage("");
     }
 
     useEffect(() => {
@@ -141,7 +159,9 @@ function Home() {
 
         if (produtoInterno === null && objetoProduto !== null) criarProduto(objetoProduto);
 
-    }, [objetoProduto, produtoInterno, propagandaAtual, criarProduto, objetoCarrinho])
+        if (objetoLocalStorage !== "") salvaLocalStorage(objetoLocalStorage);
+
+    }, [objetoProduto, produtoInterno, propagandaAtual, objetoLocalStorage, criarProduto])
 
     return (
         <>

@@ -6,8 +6,9 @@ import Navbar from "../components/navbar";
 
 function Carrinho() {
 
-    const [valorProps, setValorProps] = useState();
-    const [objetoProdutoInterno, setObjetoProdutoInterno] = useState();
+
+    const [valorLocalStorage, setValorLocalStorage] = useState(JSON.parse(localStorage.getItem("itemCarrinho")));
+    const [objeto, setObjetoProdutoInterno] = useState();
     const [componenteProduto, setComponenteProduto] = useState([]);
     const [listaComponenteProdutoId, setListaComponenteProdutoId] = useState([]);
     const [idAnterior, setIdAnterior] = useState("");
@@ -34,63 +35,60 @@ function Carrinho() {
         })
     }
     const criarGrupoProduto = useCallback(() => {
-        const valorRetorno = [...componenteProduto]
-        if (objetoProdutoInterno !== undefined) {
-            if (verificaInclusao(objetoProdutoInterno) === false) {
-                setListaComponenteProdutoId([...listaComponenteProdutoId, objetoProdutoInterno.id])
+        const valorRetorno = [];
 
-                valorRetorno.push(
-                    <div className="containerProdutoCarrinho" key={objetoProdutoInterno.id}>
-                        <div className="containerImagemProdutoCarrinho">
-                            <img src={`/assets/${objetoProdutoInterno.image}`} />
-                        </div>
-                        <div className="containerInformacaoProdutoCarrinho centralizar">
-                            <p className="informacaoProdutoCarrinho">
-                                {objetoProdutoInterno.name}
-                            </p>
-                            <p className="informacaoProdutoCarrinho">
-                                {`R$ ${objetoProdutoInterno.price}`}
-                            </p>
-                            <img src="/assets/delete.svg" alt="Lixeira" onClick={e => removerObjeto(objetoProdutoInterno.id)} />
+        valorLocalStorage.map(objeto => {
+            valorRetorno.push(
+                <div className="containerProdutoCarrinho" key={objeto.id}>
+                    <div className="containerImagemProdutoCarrinho">
+                        <img src={`/assets/${objeto.image}`} />
+                    </div>
+                    <div className="containerInformacaoProdutoCarrinho centralizar">
+                        <p className="informacaoProdutoCarrinho negrito">
+                            {objeto.name}
+                        </p>
+                        <p className="informacaoProdutoCarrinho">
+                            {`R$ ${objeto.price}`}
+                        </p>
+                        <div className="botaoCarrinho" onClick={e => removerObjeto(objeto.id)} >
+                            <img src="/assets/delete.svg" alt="Lixeira" />
+                            <p className="informacaoProdutoCarrinho">Remover</p>
                         </div>
                     </div>
-                )
-            }
-        }
+                </div>
+            )
+        })
+
         setComponenteProduto(valorRetorno);
-    }, [objetoProdutoInterno, setComponenteProduto])
+    }, [localStorage, setComponenteProduto])
 
 
     useEffect(() => {
-        /* if (objetoCarrinho !== undefined) {
-            if (idAnterior === "") {
-                setIdAnterior(objetoCarrinho.id);
-                setObjetoProdutoInterno(objetoCarrinho);
-                criarGrupoProduto();
-            }
-            else if (idAnterior !== objetoCarrinho.id) {
-                setIdAnterior(objetoCarrinho.id);
-                setObjetoProdutoInterno(objetoCarrinho);
-                criarGrupoProduto();
-            }
-
-        } */
-    }, [criarGrupoProduto, listaComponenteProdutoId, componenteProduto])
+        if (valorLocalStorage !== null) {
+            criarGrupoProduto();
+        }
+    }, [criarGrupoProduto, valorLocalStorage])
     return (
         <>
             <Header />
             <Navbar />
             <section id="sectionCarrinho">
-                <div id="containerGrupoProdutos">
+                <div id="containerGrupoProdutosCarrinho">
+                    <h2 id="tituloGrupoProduto">
+                        Produto Carrinho
+                    </h2>
                     <div id="grupoProdutosCarrinho">
                         {componenteProduto}
                     </div>
                 </div>
                 <div id="containerResultadoCheckout">
+                    <h2 id="tituloResultadoCheckout">
+                        Resumo
+                    </h2>
                     <div id="dadosResultadoCarrinho">
-                        <p>{`Frete: ${"000,00"}`}</p>
-                        <p>{`SubTotal: ${"000,00"}`}</p>
-                        <p>{`Total: ${"000,00"}`}</p>
+                        <p className="informacaoResultado">{`Frete: ${"000,00"}`}</p>
+                        <p className="informacaoResultado">{`SubTotal: ${"000,00"}`}</p>
+                        <p className="informacaoResultado">{`Total: ${"000,00"}`}</p>
                     </div>
                     <div id="containerGrupoBotaoResultadoCarrinho">
                         <div className="containerBotaoResultadoCarrinho">

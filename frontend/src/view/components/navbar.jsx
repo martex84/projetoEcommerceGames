@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import '../../css/navbar.css'
 
@@ -7,9 +8,11 @@ function Navbar() {
     return (
         <>
             <nav id="containerNavBar">
-                <button className="botaoNavbar">
-                    Home
-                </button>
+                <Link to="/">
+                    <button className="botaoNavbar">
+                        Home
+                    </button>
+                </Link>
                 <button className="botaoNavbar">
                     Estratégia
                 </button>

@@ -31,3 +31,12 @@
 .marginTopZero {
     margin-top: 0;
 }
+
+/*
+
+    Font
+
+*/
+.negrito {
+    font-weight: bolder;
+}

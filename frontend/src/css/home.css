@@ -102,7 +102,7 @@
 
 */
 #containerGrupoProdutos {
-    width: 800px;
+    width: 780px;
     margin: auto;
     display: flex;
     align-items: center;
@@ -122,7 +122,7 @@
     color: #9932CC;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 799px) {
     #containerGrupoProdutos {
         width: 100%;
     }
