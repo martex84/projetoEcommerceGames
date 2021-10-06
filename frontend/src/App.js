@@ -1,11 +1,11 @@
 import './css/app.css';
 
-import Home from './view/pages/home'
+import Rota from './routes';
 
 function App() {
   return (
     <div className="App">
-      <Home />
+      <Rota />
     </div>
   );
 }

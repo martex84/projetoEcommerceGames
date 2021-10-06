@@ -6,7 +6,6 @@ import Header from "../components/header";
 import Navbar from "../components/navbar";
 import Produto from "../components/produto";
 import jsonProduto from '../../dataBase/products.json';
-import Carrinho from "../components/carrinho";
 import { ProdutoContext } from '../../context/produtoContext';
 
 function Home() {
@@ -146,14 +145,7 @@ function Home() {
 
     return (
         <>
-            <Header
-                childrens={
-                    <Carrinho
-                        propsCarrinho={{ objetoCarrinho }}
-                        displayAbaCarrinho={false}
-                    />
-                }
-            />
+            <Header />
             <Navbar />
             <section id="sectionPrincipalHome">
                 <div id="containerPropaganda" className="centralizar">

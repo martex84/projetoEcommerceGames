@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect, useState } from "react";
 
 import '../../css/carrinho.css'
+import Header from "../components/header";
+import Navbar from "../components/navbar";
 
-function Carrinho({ propsCarrinho, viewAba }) {
+function Carrinho() {
 
-
-    const { objetoCarrinho } = propsCarrinho;
     const [valorProps, setValorProps] = useState();
     const [objetoProdutoInterno, setObjetoProdutoInterno] = useState();
     const [componenteProduto, setComponenteProduto] = useState([]);
@@ -62,7 +62,7 @@ function Carrinho({ propsCarrinho, viewAba }) {
 
 
     useEffect(() => {
-        if (objetoCarrinho !== undefined) {
+        /* if (objetoCarrinho !== undefined) {
             if (idAnterior === "") {
                 setIdAnterior(objetoCarrinho.id);
                 setObjetoProdutoInterno(objetoCarrinho);
@@ -74,16 +74,19 @@ function Carrinho({ propsCarrinho, viewAba }) {
                 criarGrupoProduto();
             }
 
-        }
-    }, [propsCarrinho, criarGrupoProduto, listaComponenteProdutoId, componenteProduto])
+        } */
+    }, [criarGrupoProduto, listaComponenteProdutoId, componenteProduto])
     return (
         <>
-            <div id="containerAbaInternaCarrinho">
-                <p> {valorProps} </p>
-                <div id="grupoProdutosCarrinho">
-                    {componenteProduto}
+            <Header />
+            <Navbar />
+            <section id="sectionCarrinho">
+                <div id="containerGrupoProdutos">
+                    <div id="grupoProdutosCarrinho">
+                        {componenteProduto}
+                    </div>
                 </div>
-                <div id="resultadoCarrinho">
+                <div id="containerResultadoCheckout">
                     <div id="dadosResultadoCarrinho">
                         <p>{`Frete: ${"000,00"}`}</p>
                         <p>{`SubTotal: ${"000,00"}`}</p>
@@ -98,7 +101,7 @@ function Carrinho({ propsCarrinho, viewAba }) {
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </>
     );
 }
