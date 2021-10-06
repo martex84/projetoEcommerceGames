@@ -29,7 +29,7 @@ function Header({ childrens, displayAbaCarrinho }) {
                         </span>
                     </div>
                     <div id="menuSmartphone">
-                        Icone Menu
+                        <img src="assets/menu.svg" />
                     </div>
                 </div>
                 <Link to="/carrinho">

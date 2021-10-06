@@ -11,24 +11,25 @@ function Produto(props) {
 
     return (
         <>
-            <div id="containerProduto">
-                <div id="nomeProduto" className="centralizar">
-                    <span>
+            <div className="containerProduto">
+                <div className="nomeProduto centralizar">
+                    <span className="negrito">
                         {props.objeto.name}
                     </span>
                 </div>
-                <div id="containerImagemProduto" className="centralizar">
+                <div className="containerImagemProduto centralizar">
                     <img src={`/assets/${props.objeto.image}`} />
                 </div>
-                <div id="containerPrecoProduto" className="centralizar">
+                <div className="containerPrecoProduto centralizar">
                     <span>
-                        {props.objeto.price}
+                        {`R$ ${props.objeto.price}`}
                     </span>
                 </div>
-                <button id="botaoProduto" onClick={e => {
+                <button className="botaoProduto" onClick={e => {
                     salvaListaCarrinho(props.objeto);
                 }}>
-                    Comprar
+                    <img src="assets/cart-icon-include.svg" />
+                    <span>Comprar</span>
                 </button>
             </div>
         </>

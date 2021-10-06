@@ -3,7 +3,7 @@
     Container
 
 */
-#containerProduto {
+.containerProduto {
     width: 210px;
     margin: 20px;
 }
@@ -13,7 +13,7 @@
     Nome
 
 */
-#nomeProduto {
+.nomeProduto {
     height: 50px;
     margin: auto;
     display: flex;
@@ -21,7 +21,7 @@
     border-radius: 10px 10px 0 0;
 }
 
-#nomeProduto>span {
+.nomeProduto>span {
     width: 180px;
 }
 
@@ -30,7 +30,7 @@
     Imagem
 
 */
-#containerImagemProduto {
+.containerImagemProduto {
     height: 220px;
     background-color: #ffff;
     text-align: center;
@@ -41,7 +41,7 @@
     Preço
 
 */
-#containerPrecoProduto {
+.containerPrecoProduto {
     height: 40px;
     background-color: #141D38;
 }
@@ -51,11 +51,31 @@
     Botão
 
 */
-#botaoProduto {
+.botaoProduto {
     width: 100%;
     height: 40px;
     border: 0;
-    background-color: #978AB8;
+    background-color: #50466B;
     border-radius: 0 0 10px 10px;
     cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: #ffff;
+}
+
+.botaoProduto:hover {
+    background-color: #B8A1F7;
+    color: #141D38;
+}
+
+.botaoProduto>img {
+    width: 30px;
+    margin-right: 10px;
+}
+
+.botaoProduto>span {
+    font-size: 1.3em;
+    font-weight: 900;
 }

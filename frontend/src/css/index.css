@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  font-family: Courier, monospace;
 }
 
 body {
@@ -10,6 +11,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #ffff;
+  height: 100vh;
+  background-color: #D4DDF7;
 }
 
 code {
