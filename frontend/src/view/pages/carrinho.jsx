@@ -12,6 +12,11 @@ function Carrinho() {
     const [componenteProduto, setComponenteProduto] = useState([]);
     const [listaComponenteProdutoId, setListaComponenteProdutoId] = useState([]);
     const [idAnterior, setIdAnterior] = useState("");
+    const [calculoProdutos, setCalculoProdutos] = useState({
+        frete: 0,
+        subtotal: 0,
+        total: 0,
+    })
 
     function verificaInclusao(objeto) {
         let returnoBoolean = false;
@@ -25,15 +30,23 @@ function Carrinho() {
         return returnoBoolean;
     }
 
-    function removerObjeto(idObjeto) {
-        listaComponenteProdutoId.map(componente => {
+    const removerObjeto = useCallback((idObjeto) => {
+        const valorLocal = []
 
-            if (componente === idObjeto) {
-                componenteProduto.splice(idObjeto);
 
+        valorLocalStorage.map((componente, index) => {
+            if (componente.id !== idObjeto) {
+                valorLocal.push(componente)
             }
         })
-    }
+
+        localStorage.removeItem("itemCarrinho");
+
+        localStorage.setItem("itemCarrinho", JSON.stringify(valorLocal));
+
+        window.location.reload();
+    });
+
     const criarGrupoProduto = useCallback(() => {
         const valorRetorno = [];
 
@@ -67,7 +80,7 @@ function Carrinho() {
         if (valorLocalStorage !== null) {
             criarGrupoProduto();
         }
-    }, [criarGrupoProduto, valorLocalStorage])
+    }, [valorLocalStorage, criarGrupoProduto])
     return (
         <>
             <Header />
