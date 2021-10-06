@@ -27,7 +27,7 @@
 #containerGrupoProdutosCarrinho {
     width: 780px;
     margin-right: 10px;
-    padding: 5px;
+    padding: 5px 5px 10px 5px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -110,7 +110,7 @@
 
 */
 #containerResultadoCheckout {
-    width: 200px;
+    width: 250px;
     min-width: 200px;
     display: flex;
     flex-direction: column;
@@ -125,18 +125,19 @@
     height: 100%;
     margin: 0;
     padding: 20px 10px;
-
 }
 
 #dadosResultadoCarrinho {
-    width: 80%;
+    width: 90%;
     padding: 12px;
     background-color: #ffff;
+    border-radius: 5px;
 }
 
 #containerGrupoBotaoResultadoCarrinho {
     width: 100%;
     height: 100px;
+    margin: 10px 0;
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
@@ -179,7 +180,7 @@
 }
 
 .botaoLimpar {
-    height: 20px;
+    height: 30px;
     margin-top: 10px;
     border-radius: 5px;
     background-color: #37519E;
