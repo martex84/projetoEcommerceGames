@@ -23,6 +23,7 @@
 }
 
 .containerProdutoCarrinho {
+    margin-top: 5px;
     height: 150px;
     padding: 10px;
     background-color: #ffff;
@@ -31,6 +32,10 @@
     flex-wrap: nowrap;
     align-items: center;
     justify-content: space-around;
+}
+
+.containerProdutoCarrinho:first-child {
+    margin-top: 0px;
 }
 
 .containerImagemProdutoCarrinho {

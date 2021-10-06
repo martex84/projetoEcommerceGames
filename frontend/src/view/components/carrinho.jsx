@@ -1,54 +1,85 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 import '../../css/carrinho.css'
 
-function Carrinho(props) {
+function Carrinho({ propsCarrinho, viewAba }) {
 
-    const [objetoProduto, setObjetoProduto] = useState([
-        {
-            "id": 99,
-            "name": "Call Of Duty WWII",
-            "price": 249.99,
-            "score": 205,
-            "image": "call-of-duty-wwii.png"
-        }
-    ]);
 
-    const [componenteProduto, setComponenteProduto] = useState();
+    const { objetoCarrinho } = propsCarrinho;
+    const [valorProps, setValorProps] = useState();
+    const [objetoProdutoInterno, setObjetoProdutoInterno] = useState();
+    const [componenteProduto, setComponenteProduto] = useState([]);
+    const [listaComponenteProdutoId, setListaComponenteProdutoId] = useState([]);
+    const [idAnterior, setIdAnterior] = useState("");
 
-    function criarGrupoProduto() {
-        const valorRetorno = []
-        objetoProduto.map(produto => {
-            valorRetorno.push(
-                <div className="containerProdutoCarrinho">
-                    <div className="containerImagemProdutoCarrinho">
-                        <img src={`/assets/${produto.image}`} />
-                    </div>
-                    <div className="containerInformacaoProdutoCarrinho centralizar">
-                        <p className="informacaoProdutoCarrinho">
-                            {produto.name}
-                        </p>
-                        <p className="informacaoProdutoCarrinho">
-                            {`R$ ${produto.price}`}
-                        </p>
-                        <img src="/assets/delete.svg" alt="Lixeira" />
-                    </div>
-                </div>
-            )
+    function verificaInclusao(objeto) {
+        let returnoBoolean = false;
+        listaComponenteProdutoId.map(componente => {
+            if (returnoBoolean === false) {
+                if (componente === objeto.id) {
+                    return returnoBoolean = true;
+                }
+            }
         })
-
-        setComponenteProduto(valorRetorno);
+        return returnoBoolean;
     }
 
-    useEffect(() => {
-        if (componenteProduto === undefined) {
-            criarGrupoProduto()
-        }
-    })
+    function removerObjeto(idObjeto) {
+        listaComponenteProdutoId.map(componente => {
 
+            if (componente === idObjeto) {
+                componenteProduto.splice(idObjeto);
+
+            }
+        })
+    }
+    const criarGrupoProduto = useCallback(() => {
+        const valorRetorno = [...componenteProduto]
+        if (objetoProdutoInterno !== undefined) {
+            if (verificaInclusao(objetoProdutoInterno) === false) {
+                setListaComponenteProdutoId([...listaComponenteProdutoId, objetoProdutoInterno.id])
+
+                valorRetorno.push(
+                    <div className="containerProdutoCarrinho" key={objetoProdutoInterno.id}>
+                        <div className="containerImagemProdutoCarrinho">
+                            <img src={`/assets/${objetoProdutoInterno.image}`} />
+                        </div>
+                        <div className="containerInformacaoProdutoCarrinho centralizar">
+                            <p className="informacaoProdutoCarrinho">
+                                {objetoProdutoInterno.name}
+                            </p>
+                            <p className="informacaoProdutoCarrinho">
+                                {`R$ ${objetoProdutoInterno.price}`}
+                            </p>
+                            <img src="/assets/delete.svg" alt="Lixeira" onClick={e => removerObjeto(objetoProdutoInterno.id)} />
+                        </div>
+                    </div>
+                )
+            }
+        }
+        setComponenteProduto(valorRetorno);
+    }, [objetoProdutoInterno, setComponenteProduto])
+
+
+    useEffect(() => {
+        if (objetoCarrinho !== undefined) {
+            if (idAnterior === "") {
+                setIdAnterior(objetoCarrinho.id);
+                setObjetoProdutoInterno(objetoCarrinho);
+                criarGrupoProduto();
+            }
+            else if (idAnterior !== objetoCarrinho.id) {
+                setIdAnterior(objetoCarrinho.id);
+                setObjetoProdutoInterno(objetoCarrinho);
+                criarGrupoProduto();
+            }
+
+        }
+    }, [propsCarrinho, criarGrupoProduto, listaComponenteProdutoId, componenteProduto])
     return (
         <>
             <div id="containerAbaInternaCarrinho">
+                <p> {valorProps} </p>
                 <div id="grupoProdutosCarrinho">
                     {componenteProduto}
                 </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, createContext } from "react";
 
 import '../../css/home.css'
 
@@ -7,6 +7,7 @@ import Navbar from "../components/navbar";
 import Produto from "../components/produto";
 import jsonProduto from '../../dataBase/products.json';
 import Carrinho from "../components/carrinho";
+import { ProdutoContext } from '../../context/produtoContext';
 
 function Home() {
 
@@ -22,7 +23,8 @@ function Home() {
     const [categoriaAtual] = useState("Home");
     const [visualizacaoFiltro, setVisualizacaoFiltro] = useState("semDisplay")
     const [setaFiltro, setSetaFiltro] = useState(".setaFiltroBaixo");
-    const [propagandaAtual, setPropagandaAtual] = useState(0)
+    const [propagandaAtual, setPropagandaAtual] = useState(0);
+    const [objetoCarrinho, setObjetoCarrinho] = useState();
 
     function OrganizaComponentes(tipoOrganizacao) {
         const objetoInterno = [...jsonProduto];
@@ -91,7 +93,8 @@ function Home() {
             return arrayInterna.push(<Produto objeto={campo} key={campo.id} />)
         })
 
-        setProdutoInterno(arrayInterna)
+        setProdutoInterno(arrayInterna);
+
     }, [setProdutoInterno])
 
     function rotacaoPropaganda(tipo) {
@@ -130,21 +133,25 @@ function Home() {
         }
     }
 
+    function salvaListaCarrinho(objeto) {
+        setObjetoCarrinho(objeto);
+    }
+
     useEffect(() => {
         if (objetoProduto === null) setObjetoProduto(jsonProduto);
 
         if (produtoInterno === null && objetoProduto !== null) criarProduto(objetoProduto);
 
-    }, [objetoProduto, produtoInterno, propagandaAtual, criarProduto])
-
-
-
+    }, [objetoProduto, produtoInterno, propagandaAtual, criarProduto, objetoCarrinho])
 
     return (
         <>
             <Header
                 childrens={
-                    <Carrinho />
+                    <Carrinho
+                        propsCarrinho={{ objetoCarrinho }}
+                        displayAbaCarrinho={false}
+                    />
                 }
             />
             <Navbar />
@@ -181,9 +188,12 @@ function Home() {
                         </ul>
                     </div>
                 </div>
-                <div id="containerGrupoProdutos">
-                    {produtoInterno}
-                </div>
+                <ProdutoContext.Provider value={{ salvaListaCarrinho }}>
+                    <div id="containerGrupoProdutos">
+                        {produtoInterno}
+                    </div>
+                </ProdutoContext.Provider>
+
             </section>
         </>
     );

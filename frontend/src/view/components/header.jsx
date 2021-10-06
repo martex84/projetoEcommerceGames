@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import '../../css/header.css'
 
-function Header({ childrens }) {
+function Header({ childrens, displayAbaCarrinho }) {
     const [displayCarrinho, setDisplayCarrinho] = useState("semDisplay")
     const [propriedadeCarrinho, setPropriedadeCarrinho] = useState(false)
 
