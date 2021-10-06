@@ -110,8 +110,8 @@
 
 */
 #containerResultadoCheckout {
-    width: 150px;
-    min-width: 150px;
+    width: 200px;
+    min-width: 200px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -129,6 +129,7 @@
 }
 
 #dadosResultadoCarrinho {
+    width: 80%;
     padding: 12px;
     background-color: #ffff;
 }
@@ -146,6 +147,11 @@
 .informacaoResultado {
     margin: 5px 0;
     color: #182345;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
 }
 
 .containerBotaoResultadoCarrinho {
@@ -181,4 +187,10 @@
 
 .botaoLimpar:hover {
     color: #4E72DE;
+}
+
+@media only screen and (max-width: 799px) {
+    #containerResultadoCheckout {
+        margin-top: 20px;
+    }
 }

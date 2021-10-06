@@ -18,16 +18,22 @@ function Carrinho() {
         total: 0,
     })
 
-    function verificaInclusao(objeto) {
-        let returnoBoolean = false;
-        listaComponenteProdutoId.map(componente => {
-            if (returnoBoolean === false) {
-                if (componente === objeto.id) {
-                    return returnoBoolean = true;
-                }
-            }
+    function calcularValores() {
+        let frete = 0;
+        let subtotal = 0;
+        let total = 0;
+
+        valorLocalStorage.map(componente => {
+            subtotal = subtotal + componente.price;
+            frete = frete + 10;
+            total = frete + subtotal;
         })
-        return returnoBoolean;
+
+        setCalculoProdutos({
+            frete,
+            subtotal,
+            total
+        })
     }
 
     const removerObjeto = useCallback((idObjeto) => {
@@ -72,6 +78,8 @@ function Carrinho() {
             )
         })
 
+        calcularValores();
+
         setComponenteProduto(valorRetorno);
     }, [localStorage, setComponenteProduto])
 
@@ -99,9 +107,18 @@ function Carrinho() {
                         Resumo
                     </h2>
                     <div id="dadosResultadoCarrinho">
-                        <p className="informacaoResultado">{`Frete: ${"000,00"}`}</p>
-                        <p className="informacaoResultado">{`SubTotal: ${"000,00"}`}</p>
-                        <p className="informacaoResultado">{`Total: ${"000,00"}`}</p>
+                        <p className="informacaoResultado">
+                            <span>{`Frete: `}</span>
+                            <span className="negrito">${calculoProdutos.frete}</span>
+                        </p>
+                        <p className="informacaoResultado">
+                            <span>{`SubTotal: `}</span>
+                            <span className="negrito">${calculoProdutos.subtotal}</span>
+                        </p>
+                        <p className="informacaoResultado">
+                            <span>{`Total: `}</span>
+                            <span className="negrito">${calculoProdutos.total}</span>
+                        </p>
                     </div>
                     <div id="containerGrupoBotaoResultadoCarrinho">
                         <div className="containerBotaoResultadoCarrinho">
