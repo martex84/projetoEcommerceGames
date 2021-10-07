@@ -40,3 +40,8 @@
 .negrito {
     font-weight: bolder;
 }
+
+.limparLink {
+    color: #ffff;
+    text-decoration: none;
+}

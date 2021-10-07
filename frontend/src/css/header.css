@@ -16,7 +16,7 @@
 
 /*
 
-    Logo
+    Logo e Menu
 
 */
 #logoPrincipal {
@@ -27,12 +27,11 @@
 #logoPrincipal>img {
     width: 50px;
     height: 30px;
-    margin-right: 5px;
 }
 
-#logoPrincipal>span {
+.textoLogo {
+    margin-left: 5px;
     color: #9932CC;
-    text-shadow: 1px 0px 1px #ffff;
     font-size: 1.3em;
 }
 
@@ -49,6 +48,58 @@
 
     #menuSmartphone {
         display: block;
+    }
+
+    #abaMenuSmartphone {
+        width: 300px;
+        background-color: #4E72DE;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 10;
+    }
+
+    #containerCloseMenu {
+        position: absolute;
+        top: 7px;
+        right: 7px;
+        cursor: pointer;
+    }
+
+    #containerCloseMenu>img {
+        width: 70px;
+    }
+
+    #abaMenuSmartphone>ul {
+        margin-top: 0;
+        padding: 0;
+    }
+
+    .containerItemAbaMenuSmartphone:first-child {
+        padding-right: 0;
+    }
+
+    .containerItemAbaMenuSmartphone {
+        margin-bottom: 10px;
+        padding: 10px;
+        list-style: none;
+        margin-left: 5px;
+        text-decoration: none;
+        font-size: 1.3em;
+    }
+
+    #tituloSubMenu {
+        display: block;
+        margin: 0;
+        padding: 30px 10px;
+        background-color: #141D38;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    #logoItemAbaMenuSmartphone {
+        width: 30px;
     }
 
 }
