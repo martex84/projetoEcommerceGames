@@ -10,3 +10,9 @@ O projeto tem como função simular a compra de jogos, realizando a filtragem e 
 - Auto inclusão de produtos novos no sistema;
 - Auto inclusão dos produtos no carrinho;
 - Calculo automático de frete e produtos;
+
+## Utilização
+- Realize a clonagem do projeto;
+- Instale as depedências;
+- Entre na pasta frontend;
+- Utilize o "yarn Start" para iniciar o projeto;
