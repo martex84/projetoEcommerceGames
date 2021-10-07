@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import '../../css/header.css'
 
 function Header({ props }) {
-    console.log(props)
     const [displayMenu, setDisplayMenu] = useState("semDisplay");
     const [propriedadeMenu, setPropriedadeMenu] = useState(false);
 

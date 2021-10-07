@@ -5,6 +5,7 @@ import '../../css/home.css'
 import Header from "../components/header";
 import Navbar from "../components/navbar";
 import Produto from "../components/produto";
+import Footer from "../components/footer";
 import jsonProduto from '../../dataBase/products.json';
 import { ProdutoContext } from '../../context/produtoContext';
 
@@ -239,8 +240,8 @@ function Home() {
                         {produtoInterno}
                     </div>
                 </ProdutoContext.Provider>
-
             </section>
+            <Footer />
         </>
     );
 }

@@ -3,6 +3,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import '../../css/carrinho.css'
 import Header from "../components/header";
 import Navbar from "../components/navbar";
+import Footer from "../components/footer";
 
 function Carrinho() {
 
@@ -156,6 +157,7 @@ function Carrinho() {
                     </div>
                 </div>
             </section>
+            <Footer />
         </>
     );
 }
