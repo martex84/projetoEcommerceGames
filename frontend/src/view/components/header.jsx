@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom'
 
 import '../../css/header.css'
 
-function Header({ childrens, displayAbaCarrinho }) {
+function Header({ props }) {
+    console.log(props)
     const [displayMenu, setDisplayMenu] = useState("semDisplay");
     const [propriedadeMenu, setPropriedadeMenu] = useState(false);
 
@@ -43,7 +44,7 @@ function Header({ childrens, displayAbaCarrinho }) {
                                         EGame
                                     </span>
                                 </li>
-                                <Link to="/" className="limparLink">
+                                <Link to="/" className="limparLink corPadrao">
                                     <li className="containerItemAbaMenuSmartphone">
                                         Home
                                     </li>
@@ -67,9 +68,11 @@ function Header({ childrens, displayAbaCarrinho }) {
                         </div>
                     </div>
                 </div>
-                <Link to="/carrinho">
+                <Link to="/carrinho" className="limparLink">
                     <div id="containerCarrinhoCompra">
                         <img id="carrinhoCompra" src="assets/cart-icon.svg"></img>
+                        <p>Carrinho</p>
+                        <span id="contagemProdutoCarrinho">{props}</span>
                     </div>
                 </Link>
             </header>

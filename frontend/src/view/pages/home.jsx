@@ -24,6 +24,7 @@ function Home() {
     const [setaFiltro, setSetaFiltro] = useState(".setaFiltroBaixo");
     const [propagandaAtual, setPropagandaAtual] = useState(0);
     const [objetoLocalStorage, setObjetoLocalStorage] = useState("");
+    const [contagemProdutos, setContagemProdutos] = useState(0);
 
     function OrganizaComponentes(tipoOrganizacao) {
         const objetoInterno = [...jsonProduto];
@@ -138,21 +139,52 @@ function Home() {
 
     function salvaLocalStorage(objeto) {
         let objetoRetorno = []
+        let valorRepetido = false;
 
         if (localStorage.getItem("itemCarrinho") !== null) {
             JSON.parse(localStorage.getItem("itemCarrinho")).map(objetoInterno => {
-                objetoRetorno.push(objetoInterno);
+                if (objetoInterno.id !== objeto.id && valorRepetido === false) {
+                    objetoRetorno.push(objetoInterno);
+                    setContagemProdutos(contagemProdutos + 1);
+                }
+                else {
+                    valorRepetido = true
+                }
             })
         }
 
-        objetoRetorno.push(objeto);
+        if (valorRepetido === false) {
+            objetoRetorno.push(objeto);
 
-        localStorage.removeItem("itemCarrinho");
+            localStorage.removeItem("itemCarrinho");
 
-        localStorage.setItem("itemCarrinho", JSON.stringify(objetoRetorno));
+            localStorage.setItem("itemCarrinho", JSON.stringify(objetoRetorno));
 
-        setObjetoLocalStorage("");
+            setObjetoLocalStorage("");
+
+            setContagemProdutos(contagemProdutos + 1);
+
+            alert("Produto salvo com sucesso!");
+        }
+        else {
+            alert("Apenas um produto por pessoa!");
+        }
+
+
     }
+
+    const realizarContagemProdutos = useCallback(() => {
+        let valorInterno = 0
+        if (localStorage.getItem("itemCarrinho") !== null) {
+            JSON.parse(localStorage.getItem("itemCarrinho")).map(objetoInterno => {
+
+                valorInterno = valorInterno + 1;
+            })
+        }
+
+        setContagemProdutos(valorInterno);
+
+    }, [setContagemProdutos])
 
     useEffect(() => {
         if (objetoProduto === null) setObjetoProduto(jsonProduto);
@@ -161,11 +193,13 @@ function Home() {
 
         if (objetoLocalStorage !== "") salvaLocalStorage(objetoLocalStorage);
 
-    }, [objetoProduto, produtoInterno, propagandaAtual, objetoLocalStorage, criarProduto])
+        realizarContagemProdutos();
+
+    }, [objetoProduto, produtoInterno, propagandaAtual, objetoLocalStorage, criarProduto, realizarContagemProdutos])
 
     return (
         <>
-            <Header />
+            <Header props={contagemProdutos} />
             <Navbar />
             <section id="sectionPrincipalHome">
                 <div id="containerPropaganda" className="centralizar">
